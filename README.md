@@ -1,55 +1,51 @@
 # GraphDB MCP Server
 
-## 🌟 Overview
+## Overview
 
 A Model Context Protocol (MCP) server implementation that provides database interaction and allows graph exploration capabilities through GraphDB. 
 This server enables running SPARQL graph queries.
 
-## 🧩 Components
+## Components
 
-### 🛠️ Tools
+### Tools
 
 The server offers these core tools:
 
-#### 📊 Query Tools
 - `read-graphdb-sparql`
    - Execute SPARQL read queries to read data from a repository
    - Input: 
      - `query` (string): The SPARQL query to execute
    - Returns: Query results as JSON serialized array of objects
 
-#### 🕸️ Schema Tools
 - `get-graphdb-schema`
    - Get a list of the RDF triples that define the ontology for the GraphDB database
    - No input required
    - Returns: JSON serialized list of the RDF triples that define the ontology of the GraphDB database
 
-## 🔧 Usage with Claude Desktop
-
-<details>
-  <summary>Legacy Syntax</summary>
+## Usage with Claude Desktop
 
 ```json
 "mcpServers": {
-  "graphdb": {
-    "command": "uvx",
-    "args": [
-      "mcp-graphdb@0.1.8",
-      "--db-url",
-      "http://localhost:7200/repositories/msft-graphrag-300",
-      "--username",
-      "graphdb",
-      "--password",
-      "<your-password>"
-    ]
-  }
+    "mcp-graphdb": {
+        "command": "uvx",
+        "args": [
+            "D:\\Source\\mcp\\mcp-graphdb",
+            "--db-url",
+            "http://localhost:7200/repositories/starwars",
+            "--schema-file",
+            "D:\\Source\\mcp\\mcp-graphdb\\data\\starwars-ontology.trig",
+            "--username",
+            "ignore",
+            "--password",
+            "ignore"
+        ]
+    }
 }
 ```
-</details>
 
-## 🚀 Development
+## Development
 
-### 📦 Prerequisites
+### Prerequisites
 
 1. Install `uv` (Universal Virtualenv):
 ```bash
@@ -78,26 +74,41 @@ source .venv/bin/activate  # On Unix/macOS
 uv pip install -e .
 ```
 
-### 🔧 Development Configuration
+### Development Configuration
 
 ```json
 # Add the server to your claude_desktop_config.json
 "mcpServers": {
-  "graphdb": {
-    "command": "uv",
-    "args": [
-      "--directory", "parent_of_servers_repo/mcp_graphdb_server",
-      "run", "mcp-graphdb-server"],
-    "env": {
-      "GRAPHDB_URI": "http://localhost",
-      "GRAPHDB_USERNAME": "<your-username>",
-      "GRAPHDB_PASSWORD": "<your-password>",
-      "GRAPHDB_REPOSITORY": "repo"
+    "mcp-graphdb": {
+        "command": "uvx",
+        "args": [
+            "D:\\Source\\mcp\\mcp-graphdb",
+            "--db-url",
+            "http://localhost:7200/repositories/starwars",
+            "--schema-file",
+            "D:\\Source\\mcp\\mcp-graphdb\\data\\starwars-ontology.trig",
+            "--username",
+            "ignore",
+            "--password",
+            "ignore"
+        ]
     }
-  }
 }
 ```
 
-## 📄 License
+## Data
+
+This uses a modified version of the Star Wars ontology and some instance data. The original data is maintained by Nick Drummand:
+
+[https://nickdrummond.github.io/star-wars-ontology/](https://nickdrummond.github.io/star-wars-ontology/)
+
+
+## Blog Post
+
+I created a blog post about my experiences creating and using this MCP Server:
+
+[http://medium.com/@ianormy]([http://medium.com/@ianormy)
+
+## License
 
 This MCP server is licensed under the MIT License. This means you are free to use, modify, and distribute the software, subject to the terms and conditions of the MIT License. For more details, please see the LICENSE file in the project repository.
