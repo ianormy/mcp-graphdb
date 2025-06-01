@@ -107,7 +107,7 @@ This uses a modified version of the Star Wars ontology and some instance data. T
 
 I created a blog post about my experiences creating and using this MCP Server:
 
-[http://medium.com/@ianormy]([http://medium.com/@ianormy)
+[https://medium.com/@ianormy/mcp-for-graphdb-d3d3cd00cd4e](https://medium.com/@ianormy/mcp-for-graphdb-d3d3cd00cd4e)
 
 ## License
 
